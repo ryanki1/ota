@@ -6,6 +6,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers.content
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers.status
 
 @SpringBootTest
@@ -58,5 +59,37 @@ class PackageControllerTest(
                     """.trimIndent()
                 )
         ).andExpect(status().isBadRequest)
+    }
+
+    @Test
+    fun `release request for a DRAFT package returns conflict`() {
+        mockMvc.perform(
+            post("/packages")
+                .contentType("application/json")
+                .content(
+                    """
+                    {
+                      "id":"curl-demo-hybrid-package",
+                      "variant": "hybrid",
+                      "components": [
+                        {
+                          "ecu": "ecu-2",
+                          "version": "1.0.0",
+                          "checksum": "abc1234",
+                          "supportedVariants": ["sedan", "hybrid"]
+                        }
+                      ]
+                    }
+                    """.trimIndent()
+                )
+              ).andExpect(status().isOk)
+        mockMvc.perform(
+            post("/packages/curl-demo-hybrid-package/release")
+              ).andExpect(status().isConflict)
+                .andExpect(
+                  content().json(
+                    """{"error":"Package curl-demo-hybrid-package must be TESTED before release."}"""
+                  )
+                )
     }
 }
