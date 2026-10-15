@@ -36,4 +36,27 @@ class PackageControllerTest(
                 )
         ).andExpect(status().isOk)
     }
+
+    @Test
+    fun `creating a package with a blank component ecu is rejected`() {
+        mockMvc.perform(
+            post("/packages")
+                .contentType("application/json")
+                .content(
+                    """
+                    {
+                      "variant": "sedan",
+                      "components": [
+                        {
+                          "ecu": "",
+                          "version": "1.0.0",
+                          "checksum": "abc123",
+                          "supportedVariants": ["sedan"]
+                        }
+                      ]
+                    }
+                    """.trimIndent()
+                )
+        ).andExpect(status().isBadRequest)
+    }
 }

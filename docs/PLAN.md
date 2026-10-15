@@ -16,6 +16,13 @@ Diese Datei gehört nach `docs/PLAN.md`. Jeder Schritt ist so geschrieben, dass 
 
 Notiere dir nach jedem Schritt in `docs/adr/` oder `docs/notes.md`, wo Copilot geholfen hat und wo du korrigieren musstest. Das ist dein Beispiel für „Agentic Software Engineering“.
 
+## Aktueller Arbeitsstand · 2026-10-15
+
+- Letzter Commit: `b7b1ab4` (`Step 1 complete`).
+- Danach geändert, noch nicht committet: `services/package-service/src/main/kotlin/com/otalab/packageservice/PackageController.kt` und neu `services/package-service/src/main/kotlin/com/otalab/packageservice/PackageControllerExceptionHandler.kt` (`@RestControllerAdvice`).
+- Verifiziert aus `services/package-service`: `./gradlew clean test` erfolgreich (Exit Code 0).
+- Als Nächstes den Diff prüfen. Danach kann Schritt 1 als abgeschlossen behandelt und der nächste Plan-Schritt begonnen werden.
+
 ---
 
 ## Zielbild: Datenfluss

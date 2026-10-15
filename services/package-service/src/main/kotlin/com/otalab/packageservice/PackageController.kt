@@ -62,18 +62,12 @@ class PackageController(
         packages[id] = released
         return released
     }
-
-    @ExceptionHandler(IllegalArgumentException::class)
-    fun handleIllegalArg(ex: IllegalArgumentException): ResponseEntity<Map<String, String>> {
-        return ResponseEntity.status(HttpStatus.CONFLICT)
-            .body(mapOf("error" to (ex.message ?: "Invalid package state")))
-    }
 }
 
 data class CreatePackageRequest(
     val id: String? = null,
     @field:NotBlank val variant: String,
-    @field:NotEmpty val components: List<CreateComponentRequest>
+    @field:NotEmpty @field:Valid val components: List<CreateComponentRequest>
 )
 
 data class CreateComponentRequest(
