@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "services/package-service"
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic",
+		"java.jdt.ls.vmargs": "-Xmx4g -Xms512m -XX:+UseG1GC -XX:+UseStringDeduplication",
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
+}

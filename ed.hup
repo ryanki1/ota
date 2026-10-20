@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd /Users/kieryan/Downloads/TGW/project/Sprint12/WM_Sprint12_203_was_136 && ls -la | head -30)",
+      "Read(//Users/kieryan/Downloads/TGW/project/Sprint12/WM_Sprint12_203_Was_136/**)",
+      "Bash(grep -n \"goodsInPosDaoPrj\\\\|GoodsInPosDaoPrj\\\\|@Autowired\" \"/Users/kieryan/Downloads/TGW/project/Sprint14/WM_Sprint14_136/backend/src/main/java/de/klug_is/iwacs/wm/movement/nodelistener/BaseProfileStationNodeListener.java\" 2>/dev/null | head -15)",
+      "Read(//Users/kieryan/Downloads/TGW/project/Sprint14/WM_Sprint14_136/backend/src/main/java/de/klug_is/iwacs/wm/movement/nodelistener/**)"
+    ]
+  },
+  "language": "german",
+  "alwaysThinkingEnabled": true,
+  "theme": "dark-daltonized",
+  "voiceEnabled": true,
+  "model": "claude-sonnet-4-6",
+  "effortLevel": "low"
+}
